@@ -1,0 +1,30 @@
+* quick reference
+
+Reference positions in the filesystem by executing =perl6 qr.p6
+add=. One can change to a reference by using =`perl6 qr.p6 cd
+<reference_name>`=, where =<reference_name>= is =basename `pwd`= by
+default. References can be removed by =perl6 qr.py remove= from the
+respective directory.
+
+It is possible to use custom reference names by providing an
+additional value for =<reference_name>= for =perl6 qr.p6 add
+<reference_name>= or =perl6 qr.p6 remove <reference_name>=.
+
+List all saved references with =perl6 qr.p6 list=.
+
+* interna
+
+For using this script it is necessary to have a folder =~/.qr= in which
+a file =~/.qr/.qr= is written, that saves all references and names with
+the date of its last usage.
+
+* usefulness for GUIs
+While this tool is convenient to be used at the command line, the
+references are useless for programs with a graphical user
+interface. For that, one can use =perl6 qr.p6 links=. For each reference
+saved, a link in =~/.qr= is created.
+
+* how it came
+
+This is a script, that I wrote for learning perl6 basics. Feel free to
+criticize my work!
