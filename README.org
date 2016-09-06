@@ -12,6 +12,30 @@ additional value for =<reference_name>= for =perl6 qr.p6 add
 
 List all saved references with =perl6 qr.p6 list=.
 
+** convenience
+
+   I use two helper mechanisms to make this program really useful.
+   First, I create a link in a folder that is registered in =$PATH=,
+   e.g. =~/bin/qr= and make it executable which saves a lot of
+   keystrokes (=qr add=, =qr remove=, =qr list=, =qr links=, =qr cd=).
+
+   For using the change directory functionality one has to use
+   backticks, because you cannot change the directory of the parent
+   process from within the perl script. =qr cd= just outputs =cd
+   some/path=. Therefore I created a simple zsh Widget:
+#+BEGIN_SRC zsh
+backtick-line() {
+    BUFFER='`'$BUFFER'`';
+    zle accept-line;
+}
+zle -N backtick-line
+bindkey '^[`' backtick-line
+#+END_SRC
+   With this, one can write, for example =qr cd lsls= and then by
+   pressing =Alt-`= this will be surrounded by backticks and then
+   executed. Very convenient. Please tell me, if you know a better way
+   of changing the directory of the parent process.
+
 * interna
 
 For using this script it is necessary to have a folder =~/.qr= in which
